@@ -1,3 +1,5 @@
 #name {
     background-image: linear-gradient(to right, #327c44, #449fd0);
+    background-clip: text;
+    color: transparent;
 }
