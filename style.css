@@ -1,5 +1,7 @@
 #name {
     background-image: linear-gradient(to right, #327c44, #449fd0);
+    width: fit-content;
     background-clip: text;
+    -webkit-background-clip: text;
     color: transparent;
 }
