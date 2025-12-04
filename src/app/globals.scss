@@ -1,0 +1,124 @@
+@use "sass:map";
+@import url("https://fonts.googleapis.com/css2?family=Onest:wght@400;700&display=swap");
+
+$themes: (
+  light: (
+    text: #121212,
+    background: #f5fff7,
+    primary: #2fb15b,
+    secondary: #a0dab6,
+    accent: #46e27a,
+  ),
+  dark: (
+    text: #f5fff7,
+    background: #121212,
+    primary: #4ed079,
+    secondary: #255f3b,
+    accent: #1db951,
+  ),
+);
+
+@mixin theme($mode) {
+  $theme: map.get($themes, $mode);
+
+  --foreground: #{map.get($theme, text)};
+  --background: #{map.get($theme, background)};
+  --primary: #{map.get($theme, primary)};
+  --secondary: #{map.get($theme, secondary)};
+  --accent: #{map.get($theme, accent)};
+}
+
+:root {
+  @include theme(light);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include theme(dark);
+    color-scheme: dark;
+  }
+}
+
+[data-theme="light"] {
+  @include theme(light);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  @include theme(dark);
+  color-scheme: dark;
+}
+
+body {
+  font-family: "Onest";
+  font-weight: 400;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Onest";
+  font-weight: 700;
+}
+
+html {
+  font-size: 100%; /* 16px */
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background);
+}
+
+h1 {
+  font-size: 4.21rem; /* 67.36px */
+}
+
+h2 {
+  font-size: 3.158rem; /* 50.56px */
+}
+
+h3 {
+  font-size: 2.369rem; /* 37.92px */
+}
+
+h4 {
+  font-size: 1.777rem; /* 28.48px */
+}
+
+h5 {
+  font-size: 1.333rem; /* 21.28px */
+}
+
+small {
+  font-size: 0.75rem; /* 12px */
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+mark {
+  background-color: var(--accent);
+  color: var(--foreground);
+  padding: 0 0.2rem;
+  border-radius: 0.2rem;
+}
+
+.font-effect {
+  font-style: italic;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: var(--accent);
+  color: transparent;
+}
