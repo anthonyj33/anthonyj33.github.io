@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Anthony Jenanian",
   description: "My personal website",
   icons: "/favicon.ico",
+  other: {
+    "darkreader-lock": "true",
+  },
 };
 
 export default function RootLayout({
